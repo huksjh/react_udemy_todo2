@@ -1,0 +1,13 @@
+.card {
+    width: 100%;
+    border: 1px solid chocolate;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        width: 500px;
+    }
+}
