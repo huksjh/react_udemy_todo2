@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import styles from "./TodoForm.module.css";
 
@@ -33,20 +35,26 @@ const TodoForm = (props) => {
             age: userAge,
         };
         props.onAddTodo(submitData);
+
+        event.target.reset();
+        setUserName("");
+        setUserAge("");
     };
     return (
-        <form onSubmit={formTodoSubmit} className={styles.input}>
-            <div>
-                <label>UserName</label>
-                <input type="text" onChange={userNameChangeHandeler} />
-            </div>
-            <div>
-                <label>Age</label>
-                <input type="number" onChange={userAgeChangeHandeler} />
-            </div>
+        <Card>
+            <form onSubmit={formTodoSubmit} className={styles.input}>
+                <div>
+                    <label>UserName</label>
+                    <input type="text" onChange={userNameChangeHandeler} />
+                </div>
+                <div>
+                    <label>Age</label>
+                    <input type="number" onChange={userAgeChangeHandeler} />
+                </div>
 
-            <Button type="submit">Add User</Button>
-        </form>
+                <Button type="submit">Add User</Button>
+            </form>
+        </Card>
     );
 };
 

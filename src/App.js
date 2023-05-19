@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 
 import TodoForm from "./components/TodoForm/TodoForm";
-import Card from "./components/UI/Card/Card";
 import TodoList from "./components/TodoList/TodoList";
 
 // 초기 데이터
@@ -38,9 +37,7 @@ function App() {
     return (
         <div>
             {/**입력폼 */}
-            <Card>
-                <TodoForm onAddTodo={addTodoHandler} />
-            </Card>
+            <TodoForm onAddTodo={addTodoHandler} />
 
             {/**데이터 출력 */}
             <TodoList items={todolist} />
