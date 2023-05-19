@@ -15,7 +15,17 @@ const TodoForm = (props) => {
     };
     const formTodoSubmit = (event) => {
         event.preventDefault();
-        console.log("formTodoSubmit");
+        //console.log("formTodoSubmit");
+        //console.log(userAge.toString().length);
+        if (userName.trim().length === 0 || userAge.length === 0) {
+            console.log("빈값 있음");
+            return;
+        }
+
+        if (userAge < 1) {
+            console.log("음수");
+            return;
+        }
 
         const submitData = {
             id: Math.random().toString(),
@@ -32,7 +42,7 @@ const TodoForm = (props) => {
             </div>
             <div>
                 <label>Age</label>
-                <input type="text" onChange={userAgeChangeHandeler} />
+                <input type="number" onChange={userAgeChangeHandeler} />
             </div>
 
             <Button type="submit">Add User</Button>

@@ -1,16 +1,18 @@
 import React from "react";
 
 // import styles from "./TodoList.module.css";
-import TodoListLi from "../TodoList/TodoListLi";
+import TodoListItem from "../TodoList/TodoListItem";
 
 const TodoList = (props) => {
     console.log(props.items);
     return (
         <ul>
-            {props.items.map((item) => {
-                console.log(item);
-                <TodoListLi liItem={item}>{item.name}</TodoListLi>;
-            })}
+            {props.items.map((item) => (
+                // console.log(item);
+                <TodoListItem key={item.id} id={item.id} Item={item}>
+                    {item.name}
+                </TodoListItem>
+            ))}
         </ul>
     );
 };
