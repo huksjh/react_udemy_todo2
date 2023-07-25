@@ -4,6 +4,7 @@
     color: #fff;
     padding: 5px 10px;
     width: 100%;
+    cursor: pointer;
 }
 
 @media (min-width: 796px) {
