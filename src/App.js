@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,Fragment } from "react";
 import "./App.css";
 
 import TodoForm from "./components/TodoForm/TodoForm";
@@ -35,13 +35,13 @@ function App() {
         });
     };
     return (
-        <div>
+        <Fragment>
             {/**입력폼 */}
             <TodoForm onAddTodo={addTodoHandler} />
 
             {/**데이터 출력 */}
             <TodoList items={todolist} />
-        </div>
+        </Fragment>
     );
 }
 
