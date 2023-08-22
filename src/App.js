@@ -1,30 +1,27 @@
 import React, { useState,Fragment } from "react";
 import "./App.css";
 
+import MainHeader from "./components/MainHeader/MainHeader";
+import Login from "./components/Login/Login";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
 
 // 초기 데이터
-const todoDummyData = [
-    {
-        id: Math.random().toString(),
-        name: "Dummy",
-        age: 22,
-    },
-    {
-        id: Math.random().toString(),
-        name: "Dummy1",
-        age: 11,
-    },
-    {
-        id: Math.random().toString(),
-        name: "Dummy2",
-        age: 32,
-    },
-];
+const todoDummyData = [];
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [todolist, setTodolist] = useState(todoDummyData);
+    
+    // 로그인
+    const loginHandler = (emain, password) =>{
+        setIsLoggedIn(true);
+    }
+
+    // 로그아웃
+    const loogoutHander = () => {
+        setIsLoggedIn(false);
+    }
 
     const addTodoHandler = (datas) => {
         console.log(datas);
@@ -36,11 +33,13 @@ function App() {
     };
     return (
         <Fragment>
-            {/**입력폼 */}
-            <TodoForm onAddTodo={addTodoHandler} />
-
-            {/**데이터 출력 */}
-            <TodoList items={todolist} />
+            <MainHeader isAuthenticated={isLoggedIn} onLogout={loogoutHander}/>
+            <main>
+                {!isLoggedIn && <Login onLogin={loginHandler}/>}
+                {isLoggedIn && <TodoForm onAddTodo={addTodoHandler} /> }
+                {isLoggedIn && <TodoList items={todolist} />}
+            </main>
+            
         </Fragment>
     );
 }
