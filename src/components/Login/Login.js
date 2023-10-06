@@ -12,13 +12,19 @@ const Login = props => {
     const [formIsValid, setFormIsValid] = useState(false);
 
     useEffect(() => {
+        // 1차 영역
+        // 처음 컴포넌트 마운트 될때 1차 실행
+        console.log('1차 영역 useEffect running');
         const isformchkTimeout = setTimeout(() => {
             console.log('폼체크 로그');
             setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
         }, 500);
 
         return () => {
-            console.log('클린업 로그');
+            // 2차 영역
+            // 의존성 항목이 있으면 해당 의존성 항목 enteredEmail, enteredPassword state 변경 감지해서 2차 영역 실행후 1창영역 실행
+            // 의존성 항목이 없으면 2차 영역 실행 안하고 해당 함수에서 벋어났을때 실행됨
+            console.log('2차 영역 useEffect cleanup');
             clearTimeout(isformchkTimeout);
         };
     }, [enteredEmail, enteredPassword]);
