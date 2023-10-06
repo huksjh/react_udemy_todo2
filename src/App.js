@@ -19,7 +19,7 @@ function App() {
         if (storedIsLoggedIn === '1') {
             setIsLoggedIn(true);
         }
-        console.log(isLoggedIn);
+        // console.log(isLoggedIn);
     }, []);
 
     // 로그인

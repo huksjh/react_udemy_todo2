@@ -11,12 +11,17 @@ const Login = props => {
     const [passwordIsvalid, setPasswordIsValid] = useState();
     const [formIsValid, setFormIsValid] = useState(false);
 
-    /*
     useEffect(() => {
-        console.log('useEffect Valid');
-        setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
+        const isformchkTimeout = setTimeout(() => {
+            console.log('폼체크 로그');
+            setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
+        }, 500);
+
+        return () => {
+            console.log('클린업 로그');
+            clearTimeout(isformchkTimeout);
+        };
     }, [enteredEmail, enteredPassword]);
-    */
 
     const emailChangeHandler = event => {
         // console.log(event.target.value);
